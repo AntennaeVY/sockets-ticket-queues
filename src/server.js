@@ -24,3 +24,11 @@ require("./sockets/socket");
 server.listen(app.get("PORT"), () => {
   console.log("App listening on port ", app.get("PORT"));
 });
+
+// Add a connect listener
+module.exports.io.on("connection", (socket) => {
+  console.log("Client connected.");
+  socket.on("disconnect", () => {
+    console.log("Client disconnected.");
+  });
+});
